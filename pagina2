@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Pulso del Colegio - Misión 10 de Agosto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        :root {
+            --color-primario: #0d2c54; /* Azul oscuro */
+            --color-secundario: #fca311; /* Naranja/Amarillo vibrante */
+            --color-avanzado: #264653;
+            --color-satisfactorio: #2a9d8f;
+            --color-minimo: #f4a261;
+            --color-insuficiente: #e76f51;
+            --color-texto: #333;
+            --color-fondo: #f4f7f9;
+            --color-blanco: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--color-primario);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .chart-card {
+            background-color: var(--color-blanco);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- ESTILOS RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .intro-text { font-size: 1rem; }
+            .chart-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>La Fuerza de una Generación</h1>
+        
+        <!-- SECCIÓN 1: PROGRESO GLOBAL -->
+        <h2>Nuestro Gran Salto: El Esfuerzo está Dando Frutos</h2>
+        <p class="intro-text">
+            Lo primero es lo más importante: como generación, hemos crecido. Al comparar los resultados de los dos simulacros, vemos un avance en áreas estratégicas que nos demuestran que nuestro trabajo y preparación van por el camino correcto. ¡Felicitémonos por este primer logro colectivo!
+        </p>
+        <div class="chart-card">
+            <div id="globalScoreChart"></div>
+        </div>
+
+        <!-- SECCIÓN 2: RADAR DE TALENTOS -->
+        <h2>Nuestro Radar de Talentos: Dónde Brillamos y Dónde Crecemos</h2>
+        <p class="intro-text">
+            Cada área de la prueba es una oportunidad. Este radar nos muestra una fotografía clara de nuestras fortalezas como colegio y las áreas donde concentraremos nuestra energía en estos 23 días. Observen dónde hemos crecido más.
+        </p>
+        <div class="chart-card">
+            <div id="radarChart"></div>
+        </div>
+
+        <!-- SECCIÓN 3: PIRÁMIDE DE POTENCIAL -->
+        <h2>Nuestra Pirámide de Potencial: ¿Dónde te Ubicas?</h2>
+        <p class="intro-text">
+            El ICFES nos clasifica en cuatro niveles de desempeño. Este es el mapa de dónde estamos ahora, según la prueba Master 11. Nuestro objetivo como generación es claro: mover a la mayor cantidad de compañeras del nivel Mínimo al Satisfactorio. ¡Cada una de ustedes es clave para lograrlo!
+        </p>
+        <div class="chart-card">
+            <div id="distributionChart"></div>
+        </div>
+
+        <nav class="navigation">
+            <a href="pagina3.html" class="cta-button">Analizar Nuestros Equipos (11-1, 11-2, 11-3)</a>
+        </nav>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- GRÁFICO 1: PUNTAJE GLOBAL ---
+        var globalScoreOptions = {
+            series: [{
+                name: 'Puntaje Global Promedio',
+                data: [286.7, 287.7]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: { show: false }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '45%',
+                    distributed: true,
+                },
+            },
+            colors: ['#2a9d8f', '#fca311'],
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val.toFixed(1);
+                },
+                style: {
+                    fontSize: '16px',
+                    colors: ["#fff"]
+                }
+            },
+            annotations: {
+                points: [{
+                    x: 'Prueba Master 11',
+                    seriesIndex: 0,
+                    label: {
+                        borderColor: '#0d2c54',
+                        offsetY: 0,
+                        style: {
+                            color: '#fff',
+                            background: '#0d2c54',
+                        },
+                        text: 'Avance: +1.0 pts',
+                    }
+                }]
+            },
+            legend: { show: false },
+            xaxis: {
+                categories: ['Prueba PI', 'Prueba Master 11'],
+                labels: { style: { fontSize: '14px' } }
+            },
+            yaxis: {
+                min: 250,
+                max: 320,
+                title: { text: 'Puntaje Global' }
+            },
+            title: {
+                text: 'Promedio Global IED Hogar Mariano',
+                align: 'center',
+                style: { fontSize: '18px', color: '#0d2c54' }
+            }
+        };
+        var globalScoreChart = new ApexCharts(document.querySelector("#globalScoreChart"), globalScoreOptions);
+        globalScoreChart.render();
+
+        // --- GRÁFICO 2: RADAR POR ÁREAS ---
+        var radarOptions = {
+            series: [{
+                name: 'Prueba PI',
+                data: [45.6, 59.5, 55.4, 51.2, 56.9],
+            }, {
+                name: 'Prueba Master 11',
+                data: [42.6, 56.2, 69.4, 58.4, 65.4],
+            }],
+            chart: {
+                height: 450,
+                type: 'radar',
+                toolbar: { show: true }
+            },
+            title: {
+                text: 'Rendimiento Institucional por Área',
+                align: 'center',
+                style: { fontSize: '18px', color: '#0d2c54' }
+            },
+            xaxis: {
+                categories: ['Matemáticas', 'Lectura Crítica', 'Sociales', 'Ciencias', 'Inglés'],
+                labels: {
+                    style: {
+                        colors: [],
+                        fontSize: '14px',
+                        fontFamily: 'Poppins, sans-serif'
+                    }
+                }
+            },
+            yaxis: {
+                show: true,
+                min: 30,
+                max: 80,
+                tickAmount: 5,
+            },
+            stroke: {
+                width: 2
+            },
+            fill: {
+                opacity: 0.2
+            },
+            markers: {
+                size: 4
+            },
+            legend: {
+                position: 'bottom',
+            }
+        };
+        var radarChart = new ApexCharts(document.querySelector("#radarChart"), radarOptions);
+        radarChart.render();
+        
+        // --- GRÁFICO 3: DISTRIBUCIÓN POR NIVELES (CORREGIDO) ---
+        // Datos precisos para el gráfico
+        const studentCounts = [6, 49, 71, 10];
+        const studentPercentages = [4, 36, 52, 7];
+
+        var distributionOptions = {
+            series: [{
+                name: 'Insuficiente', data: [4]
+            }, {
+                name: 'Mínimo', data: [36]
+            }, {
+                name: 'Satisfactorio', data: [52]
+            }, {
+                name: 'Avanzado', data: [7]
+            }],
+            chart: {
+                type: 'bar',
+                height: 120, // Altura optimizada para una sola barra
+                stacked: true,
+                stackType: '100%',
+                toolbar: { show: false }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                },
+            },
+            colors: [
+                'var(--color-insuficiente)', 
+                'var(--color-minimo)', 
+                'var(--color-satisfactorio)', 
+                'var(--color-avanzado)'
+            ],
+            stroke: {
+                width: 2,
+                colors: ['#fff']
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val, { seriesIndex }) {
+                    return val.toFixed(0) + "%";
+                },
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    colors: ["#fff"]
+                },
+                dropShadow: {
+                    enabled: true,
+                    top: 2,
+                    left: 2,
+                    blur: 3,
+                    opacity: 0.5
+                }
+            },
+            title: {
+                text: 'Distribución por Nivel ICFES (Prueba Master 11)',
+                align: 'center',
+                style: { fontSize: '18px', color: '#0d2c54' }
+            },
+            xaxis: {
+                labels: { show: false },
+                axisBorder: { show: false },
+                axisTicks: { show: false },
+            },
+            yaxis: {
+                show: false,
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val, { seriesIndex }) {
+                        const count = studentCounts[seriesIndex];
+                        return count + " estudiantes (" + val.toFixed(1) + "%)";
+                    }
+                }
+            },
+            legend: {
+                position: 'bottom',
+                horizontalAlign: 'center',
+                fontSize: '14px'
+            },
+            grid: {
+                show: false
+            }
+        };
+
+        var distributionChart = new ApexCharts(document.querySelector("#distributionChart"), distributionOptions);
+        distributionChart.render();
+    });
+    </script>
+</body>
+</html>
