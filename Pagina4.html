@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Misión de Grupo - Misión 10 de Agosto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --color-primario: #0d2c54;
+            --color-secundario: #fca311;
+            --color-texto: #333;
+            --color-fondo: #f4f7f9;
+            --color-blanco: #ffffff;
+            --color-alerta: #e76f51;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: var(--color-primario);
+            font-weight: 700;
+        }
+
+        h1 { font-size: 3rem; font-weight: 900; margin-bottom: 2rem; }
+        h2 { font-size: 2.2rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+        h3 { font-size: 1.5rem; margin-top: 3rem; }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border: 2px solid var(--color-primario);
+            background-color: transparent;
+            color: var(--color-primario);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+        }
+        
+        .tab-button:hover:not(.active) {
+             background-color: rgba(13, 44, 84, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .gauges-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gauge-card {
+            background-color: var(--color-blanco);
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .competency-charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .chart-card {
+            background-color: var(--color-blanco);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .mission-box {
+            background: linear-gradient(45deg, #0d2c54, #1a4a8a);
+            color: var(--color-blanco);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .mission-box h3 {
+            color: var(--color-secundario);
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .mission-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .mission-box strong {
+            color: var(--color-secundario);
+        }
+        
+        .navigation {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-secundario);
+            color: var(--color-primario);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 992px) {
+            .competency-charts { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .gauges-container { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tu Grupo, Tu Misión: El Plan de Precisión</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'grupo-11-1')">Ver Misión 11-1</button>
+            <button class="tab-button" onclick="openTab(event, 'grupo-11-2')">Ver Misión 11-2</button>
+            <button class="tab-button" onclick="openTab(event, 'grupo-11-3')">Ver Misión 11-3</button>
+        </div>
+
+        <!-- Contenido Grupo 11-1 -->
+        <div id="grupo-11-1" class="tab-content active">
+            <h2>Tablero de Mando: Grupo 11-1 (El Avance Sostenido)</h2>
+            <div class="gauges-container">
+                <div class="gauge-card"><div id="gauge-lc-1"></div></div>
+                <div class="gauge-card"><div id="gauge-mat-1"></div></div>
+                <div class="gauge-card"><div id="gauge-soc-1"></div></div>
+                <div class="gauge-card"><div id="gauge-cn-1"></div></div>
+                <div class="gauge-card"><div id="gauge-ing-1"></div></div>
+            </div>
+            <h3>Nuestra Misión Detallada: Matemáticas y Ciencias</h3>
+            <div class="competency-charts">
+                <div class="chart-card"><div id="competency-mat-1"></div></div>
+                <div class="chart-card"><div id="competency-cn-1"></div></div>
+            </div>
+            <div class="mission-box">
+                <h3>Misión para el 10 de Agosto: 11-1</h3>
+                <p><strong>Misión Principal:</strong> Fortalecer la competencia de <strong>Formulación y Ejecución</strong> en Matemáticas. ¡Vamos a aprender a traducir los problemas a números y a crear un plan de solución antes de resolver!</p>
+                <p><strong>Misión de Oportunidad:</strong> ¡Estamos a un paso del siguiente nivel en Ciencias Naturales! El reto es enfocarnos en el <strong>Uso Comprensivo del Conocimiento</strong> para asegurar esos puntos que nos harán subir al Nivel 3.</p>
+                <p><strong>Acción Inmediata:</strong> Cada una debe abrir su Plan de Mejora Individual y marcar con un resaltador todos los ejercicios relacionados con estas dos misiones.</p>
+            </div>
+        </div>
+
+        <!-- Contenido Grupo 11-2 -->
+        <div id="grupo-11-2" class="tab-content">
+            <h2>Tablero de Mando: Grupo 11-2 (El Salto Cuántico)</h2>
+            <div class="gauges-container">
+                <div class="gauge-card"><div id="gauge-lc-2"></div></div>
+                <div class="gauge-card"><div id="gauge-mat-2"></div></div>
+                <div class="gauge-card"><div id="gauge-soc-2"></div></div>
+                <div class="gauge-card"><div id="gauge-cn-2"></div></div>
+                <div class="gauge-card"><div id="gauge-ing-2"></div></div>
+            </div>
+             <h3>Nuestra Misión Detallada: Matemáticas y Lectura Crítica</h3>
+            <div class="competency-charts">
+                <div class="chart-card"><div id="competency-mat-2"></div></div>
+                <div class="chart-card"><div id="competency-lc-2"></div></div>
+            </div>
+            <div class="mission-box">
+                <h3>Misión para el 10 de Agosto: 11-2</h3>
+                <p><strong>Misión Principal:</strong> ¡A la reconquista! Nuestro foco es remontar en <strong>Matemáticas</strong>, especialmente en <strong>Formulación y Ejecución</strong>, y en <strong>Lectura Crítica</strong>, donde debemos afinar la competencia de <strong>Evaluar y Reflexionar</strong> para analizar con mayor profundidad.</p>
+                <p><strong>Misión de Oportunidad:</strong> Demostraron el mayor potencial de crecimiento. Ahora es el momento de transformar ese potencial en resultados consistentes, asegurando cada punto en nuestras áreas fuertes como Sociales e Inglés.</p>
+                <p><strong>Acción Inmediata:</strong> Busquen en sus planes de mejora los ejercicios que les piden "justificar", "evaluar la validez de un argumento" o "diseñar una estrategia". ¡Ahí están los puntos clave!</p>
+            </div>
+        </div>
+
+        <!-- Contenido Grupo 11-3 -->
+        <div id="grupo-11-3" class="tab-content">
+            <h2>Tablero de Mando: Grupo 11-3 (El Grupo Faro)</h2>
+            <div class="gauges-container">
+                <div class="gauge-card"><div id="gauge-lc-3"></div></div>
+                <div class="gauge-card"><div id="gauge-mat-3"></div></div>
+                <div class="gauge-card"><div id="gauge-soc-3"></div></div>
+                <div class="gauge-card"><div id="gauge-cn-3"></div></div>
+                <div class="gauge-card"><div id="gauge-ing-3"></div></div>
+            </div>
+             <h3>Nuestra Misión Detallada: Matemáticas y Lectura Crítica</h3>
+            <div class="competency-charts">
+                <div class="chart-card"><div id="competency-mat-3"></div></div>
+                <div class="chart-card"><div id="competency-lc-3"></div></div>
+            </div>
+            <div class="mission-box">
+                <h3>Misión para el 10 de Agosto: 11-3</h3>
+                <p><strong>Misión Principal:</strong> De bueno a excelente. El desafío es pulir el desempeño en <strong>Matemáticas</strong>, enfocándonos en <strong>Formulación y Ejecución</strong>, y asegurar la excelencia en <strong>Lectura Crítica</strong>, fortaleciendo la habilidad para <strong>Evaluar y Reflexionar</strong> sobre los textos.</p>
+                <p><strong>Misión de Oportunidad:</strong> Tienen el potencial de ser un grupo de referencia, con un promedio de Nivel 3 o superior en TODAS las áreas. ¡Están muy cerca! Su dominio en Sociales y Ciencias es el modelo a seguir.</p>
+                <p><strong>Acción Inmediata:</strong> Concéntrense en los problemas más complejos de sus planes de mejora. Su reto no es solo responder bien, sino entender por qué las otras opciones son incorrectas.</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+            <a href="pagina5.html" class="cta-button">¡A la Acción! Ver mi Caja de Herramientas</a>
+        </nav>
+    </div>
+
+    <script>
+        // --- FUNCIÓN PARA NAVEGACIÓN POR PESTAÑAS ---
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // --- FUNCIÓN PARA CREAR GRÁFICOS DE VELOCÍMETRO ---
+        function createGauge(selector, value, title, levels) {
+            const getColor = (val) => {
+                if (val >= levels[2]) return '#264653'; // Avanzado
+                if (val >= levels[1]) return '#2a9d8f'; // Satisfactorio
+                if (val >= levels[0]) return '#f4a261'; // Mínimo
+                return '#e76f51'; // Insuficiente
+            };
+            
+            let annotations = {};
+            // Anotación especial para Ciencias 11-1
+            if (selector === '#gauge-cn-1' && value > 50 && value < 56) {
+                 annotations = {
+                    points: [{
+                      x: '50%', y: '62%', marker: { size: 0 },
+                      label: { text: '¡A un paso del Nivel 3!', style: { background: '#fca311', color: '#fff', fontSize: '12px', padding: {left: 5, right: 5, top: 2, bottom: 2} }}
+                    }]
+                 }
+            }
+
+            var options = {
+                series: [value],
+                chart: { type: 'radialBar', height: 250 },
+                plotOptions: {
+                    radialBar: {
+                        startAngle: -135,
+                        endAngle: 135,
+                        hollow: { size: '70%' },
+                        dataLabels: {
+                            name: { show: true, fontSize: '16px', fontWeight: '700', color: '#111', offsetY: -10 },
+                            value: { offsetY: 10, fontSize: '22px', color: getColor(value), formatter: (val) => val.toFixed(1) }
+                        }
+                    }
+                },
+                fill: { colors: [getColor(value)] },
+                stroke: { lineCap: 'round' },
+                labels: [title],
+                annotations: annotations
+            };
+            var chart = new ApexCharts(document.querySelector(selector), options);
+            chart.render();
+        }
+
+        // --- FUNCIÓN PARA CREAR GRÁFICOS DE COMPETENCIAS ---
+        function createCompetencyChart(selector, title, categories, seriesData, alertIndex) {
+            var options = {
+                series: [{ name: 'Puntaje', data: seriesData }],
+                chart: { type: 'bar', height: 350, toolbar: { show: false } },
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                        distributed: true,
+                        borderRadius: 4
+                    }
+                },
+                colors: seriesData.map((_, i) => i === alertIndex ? 'var(--color-alerta)' : '#a9d6e5'),
+                dataLabels: { enabled: true, formatter: (val) => val.toFixed(1) },
+                xaxis: { categories: categories, max: 80 },
+                legend: { show: false },
+                title: { text: title, align: 'center', style: { fontSize: '16px', color: 'var(--color-primario)' } }
+            };
+            var chart = new ApexCharts(document.querySelector(selector), options);
+            chart.render();
+        }
+
+        // --- INICIALIZACIÓN DE GRÁFICOS ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Grupo 11-1
+            createGauge('#gauge-lc-1', 61.0, 'Lectura Crítica', [36, 51, 66]);
+            createGauge('#gauge-mat-1', 46.0, 'Matemáticas', [36, 51, 71]);
+            createGauge('#gauge-soc-1', 66.9, 'Sociales', [41, 56, 71]);
+            createGauge('#gauge-cn-1', 55.3, 'Ciencias', [41, 56, 71]);
+            createGauge('#gauge-ing-1', 64.6, 'Inglés', [37, 58, 71]);
+            createCompetencyChart('#competency-mat-1', 'Desglose Matemáticas', ['Interpretación', 'Formulación', 'Argumentación'], [36.1, 33.4, 42.4], 1);
+            createCompetencyChart('#competency-cn-1', 'Desglose Ciencias', ['Uso Conocimiento', 'Explicación', 'Indagación'], [51.9, 58.0, 55.5], 0);
+
+            // Grupo 11-2
+            createGauge('#gauge-lc-2', 50.5, 'Lectura Crítica', [36, 51, 66]);
+            createGauge('#gauge-mat-2', 36.4, 'Matemáticas', [36, 51, 71]);
+            createGauge('#gauge-soc-2', 66.9, 'Sociales', [41, 56, 71]);
+            createGauge('#gauge-cn-2', 55.3, 'Ciencias', [41, 56, 71]);
+            createGauge('#gauge-ing-2', 64.6, 'Inglés', [37, 58, 71]);
+            createCompetencyChart('#competency-mat-2', 'Desglose Matemáticas', ['Interpretación', 'Formulación', 'Argumentación'], [36.1, 33.4, 42.4], 1);
+            createCompetencyChart('#competency-lc-2', 'Desglose Lectura Crítica', ['Relacionar', 'Evaluar', 'Identificar'], [54.1, 46.8, 53.5], 1);
+
+            // Grupo 11-3
+            createGauge('#gauge-lc-3', 60.2, 'Lectura Crítica', [36, 51, 66]);
+            createGauge('#gauge-mat-3', 49.4, 'Matemáticas', [36, 51, 71]);
+            createGauge('#gauge-soc-3', 75.1, 'Sociales', [41, 56, 71]);
+            createGauge('#gauge-cn-3', 65.5, 'Ciencias', [41, 56, 71]);
+            createGauge('#gauge-ing-3', 67.1, 'Inglés', [37, 58, 71]);
+            createCompetencyChart('#competency-mat-3', 'Desglose Matemáticas', ['Interpretación', 'Formulación', 'Argumentación'], [50.6, 40.7, 48.2], 1);
+            createCompetencyChart('#competency-lc-3', 'Desglose Lectura Crítica', ['Relacionar', 'Evaluar', 'Identificar'], [59.5, 54.4, 61.9], 1);
+        });
+
+    </script>
+</body>
+</html> 
