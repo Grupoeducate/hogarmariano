@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Plan de Ataque - Misión 10 de Agosto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #0d2c54;
+            --color-secundario: #fca311;
+            --color-texto: #333;
+            --color-fondo: #f4f7f9;
+            --color-blanco: #ffffff;
+            --color-gris-claro: #e9ecef;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--color-primario);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .mission-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card {
+            background-color: var(--color-blanco);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 5px solid var(--color-primario);
+        }
+        
+        .mission-card .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem auto;
+            color: var(--color-primario);
+        }
+
+        .mission-card h3 {
+            color: var(--color-primario);
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+
+        .mission-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .tools-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .tool-box {
+            background-color: var(--color-blanco);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .tool-box h3 {
+             color: var(--color-primario);
+             margin-top: 0;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background-color: var(--color-secundario);
+            color: var(--color-primario);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .tips-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .tips-list .icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            color: var(--color-primario);
+        }
+        
+        .final-message {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--color-primario);
+        }
+        
+        .navigation {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .home-button {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #1a4a8a;
+        }
+        
+        @media (max-width: 992px) {
+            .tools-section { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .intro-text, .tips-list li, .tool-box p { font-size: 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tu Plan de Ataque Final: La Conquista es Personal</h1>
+
+        <!-- SECCIÓN 1: MISIONES COLECTIVAS -->
+        <h2>Nuestras 3 Misiones Colectivas</h2>
+        <p class="intro-text">Del análisis de nuestros resultados, surgen tres misiones estratégicas para toda la generación 2025. Si cada una de nosotras se enfoca en estos puntos, nuestro éxito colectivo está garantizado.</p>
+        <div class="mission-cards-container">
+            <div class="mission-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.471-2.471a.563.563 0 01.801 0l3.743 3.743a.563.563 0 010 .801l-2.471 2.471M11.42 15.17L9.639 13.4a.563.563 0 010-.801l3.743-3.743a.563.563 0 01.801 0l2.471 2.471m-4.595 4.595a.563.563 0 01.801 0l3.743 3.743a.563.563 0 010 .801l-2.471 2.471m0 0a.563.563 0 01-.801 0l-3.743-3.743a.563.563 0 010-.801l2.471-2.471m-4.595-4.595l2.471 2.471a.563.563 0 010 .801l-3.743 3.743a.563.563 0 01-.801 0l-2.471-2.471a.563.563 0 010-.801l3.743-3.743a.563.563 0 01.801 0z" /></svg>
+                </div>
+                <h3>Misión 1: De la Palabra al Número</h3>
+                <p>Nuestro mayor desafío es convertir un problema en una estrategia matemática. Antes de calcular, ¡haz un plan! Pregúntate: ¿Qué me piden? ¿Qué datos tengo? ¿Cómo los conecto?</p>
+            </div>
+            <div class="mission-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" /></svg>
+                </div>
+                <h3>Misión 2: Lee como una Detective</h3>
+                <p>Ya entendemos lo que dicen los textos. Ahora, vamos más allá. Pregúntate: ¿Cuál es la intención del autor? ¿Qué argumento está defendiendo? ¿Qué postura crítica puedo asumir?</p>
+            </div>
+            <div class="mission-card">
+                 <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.597.484-1.087 1.087-1.087h.001c.603 0 1.087.49 1.087 1.087v.001c0 .597-.484 1.087-1.087 1.087h-.001A1.087 1.087 0 0114.25 6.087zM14.25 9.75c0-.597.484-1.087 1.087-1.087h.001c.603 0 1.087.49 1.087 1.087v.001c0 .597-.484 1.087-1.087 1.087h-.001A1.087 1.087 0 0114.25 9.75zM14.25 13.413c0-.597.484-1.087 1.087-1.087h.001c.603 0 1.087.49 1.087 1.087v.001c0 .597-.484 1.087-1.087 1.087h-.001A1.087 1.087 0 0114.25 13.413zM5.106 17.542c.422-.422.34-.984-.122-1.636l-1.636-2.045c-.462-.652-1.214-.734-1.636-.312a2.642 2.642 0 00-.122 3.868l2.045 1.636c.652.462.734 1.214.312 1.636a2.642 2.642 0 00-3.868.122l-1.636 2.045c-.652.462-1.214.734-1.636.312a2.642 2.642 0 00.122-3.868l1.636-2.045c.462-.652.734-1.214.312-1.636a2.642 2.642 0 00-3.868-.122z" /></svg>
+                </div>
+                <h3>Misión 3: La Ciencia en Acción</h3>
+                <p>El reto en Ciencias es aplicar lo que sabemos. No basta con memorizar un concepto, hay que usarlo para resolver una situación real. Conecta la teoría con la práctica en cada pregunta.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: HERRAMIENTAS PERSONALES -->
+        <h2>Tus Herramientas para el Éxito</h2>
+        <p class="intro-text">La estrategia general es importante, pero tu plan personal es lo que marcará la diferencia. Aquí tienes las herramientas para que organices tu preparación en estos 23 días cruciales.</p>
+        <div class="tools-section">
+            <div class="tool-box">
+                <h3>Tu Guía Personalizada</h3>
+                <p>A continuación, recibirás tu informe individual de la prueba Master 11. Este documento es tu entrenador personal: te dice exactamente en qué preguntas fallaste y qué habilidad necesitas reforzar. ¡Es el recurso más valioso que tienes!</p>
+            </div>
+            <div class="tool-box">
+                <h3>Plan de Ataque de 23 Días</h3>
+                <p>Organiza tu estudio con esta plantilla. Define metas diarias y semanales enfocadas en las misiones clave. ¡La disciplina es tu superpoder!</p>
+                <a href="#" class="download-button">🖨️ Descargar mi Plan (PDF)</a>
+            </div>
+        </div>
+        
+        <!-- SECCIÓN 3: TIPS DE ORO -->
+        <h2>Tips de Oro para el Día D</h2>
+        <p class="intro-text">La preparación académica es clave, pero la inteligencia emocional y la estrategia el día de la prueba son igual de importantes. Mantén la calma y recuerda estos consejos.</p>
+        <ul class="tips-list">
+            <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div><span><b>Manejo del Tiempo:</b> Si una pregunta te toma más de 2 minutos, márcala y sigue. Es mejor asegurar 5 fáciles que perder tiempo en una difícil.</span></li>
+            <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></div><span><b>Controla la Ansiedad:</b> Antes de empezar, respira profundo. Si sientes nervios, cierra los ojos 10 segundos y vuelve a respirar. Confía en tu preparación.</span></li>
+            <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg></div><span><b>¿No sabes la respuesta?:</b> ¡No la dejes en blanco! Descarta las opciones obviamente incorrectas y elige entre las que quedan. Aumentarás tus probabilidades.</span></li>
+        </ul>
+
+        <p class="final-message">IED Hogar Mariano cree en ustedes. <br>¡Mucha suerte, Generación 2025!</p>
+        
+        <nav class="navigation">
+            <a href="Mision10Agosto.html" class="home-button">Volver al Inicio</a>
+        </nav>
+    </div>
+
+</body>
+</html>
